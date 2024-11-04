@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx241aehqnv1i"]
+
+[ext_resource type="AudioStream" uid="uid://bp20b8hwug015" path="res://Sounds/buttons.mp3" id="1_5o6bg"]
+
+[node name="Stream" type="AudioStreamPlayer"]
+stream = ExtResource("1_5o6bg")
+volume_db = -15.0
