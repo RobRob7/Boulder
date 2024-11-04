@@ -19,47 +19,33 @@ texture = ExtResource("2_6nosn")
 expand_mode = 1
 
 [node name="GameTitle" type="Label" parent="."]
-offset_left = 380.0
-offset_top = 80.0
-offset_right = 744.0
-offset_bottom = 183.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.0
+offset_top = 123.0
+offset_right = 182.0
+offset_bottom = 226.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0.381973, 0.297728, 0.40701, 1)
 theme_override_font_sizes/font_size = 75
 text = "BOULDER"
 
 [node name="NewAttemptButton" type="Button" parent="."]
-offset_left = 353.0
-offset_top = 238.0
-offset_right = 761.0
-offset_bottom = 320.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -41.0
+offset_right = 204.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 27
+toggle_mode = true
 text = "New Attempt"
-
-[node name="GameStartingText" type="Label" parent="."]
-anchors_preset = -1
-anchor_left = 0.356
-anchor_top = 0.539
-anchor_right = 0.594
-anchor_bottom = 0.727
-offset_left = -0.112
-offset_top = -0.272034
-offset_right = -0.288025
-offset_bottom = -0.0960388
-theme_override_font_sizes/font_size = 60
-
-[node name="TimerLabel" type="Label" parent="."]
-visible = false
-anchors_preset = -1
-anchor_left = 0.388
-anchor_top = 0.066
-anchor_right = 0.577
-anchor_bottom = 0.242
-offset_left = 45.024
-offset_top = 0.231998
-offset_right = 29.296
-offset_bottom = 0.18399
-theme_override_font_sizes/font_size = 75
-text = "10.0"
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = -1
@@ -67,10 +53,14 @@ anchor_left = 0.312
 anchor_top = 0.611
 anchor_right = 0.669
 anchor_bottom = 0.863
-offset_left = -0.424011
-offset_top = 0.071991
-offset_right = 0.311951
-offset_bottom = -0.223999
+offset_left = 12.576
+offset_top = -0.928009
+offset_right = 13.312
+offset_bottom = -1.224
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
 
 [connection signal="pressed" from="NewAttemptButton" to="." method="_on_button_pressed"]

@@ -1,0 +1,242 @@
+[gd_scene load_steps=23 format=3 uid="uid://dko0gwbn4tda4"]
+
+[ext_resource type="Texture2D" uid="uid://boy7r084vnjys" path="res://New Bitmap Image.bmp" id="1_8peaj"]
+[ext_resource type="Script" path="res://game.gd" id="1_wgcih"]
+[ext_resource type="Texture2D" uid="uid://6cy531svp65v" path="res://Art/StickMcGee1.png" id="2_w80nf"]
+[ext_resource type="Texture2D" uid="uid://cfxvaglj1evri" path="res://Art/StickMcGeeIdle1.png" id="3_f8xng"]
+[ext_resource type="Texture2D" uid="uid://edsybfvdc0da" path="res://Art/StickMcGee2.png" id="3_o5jna"]
+[ext_resource type="Texture2D" uid="uid://b0mejq4kxxrkf" path="res://Art/StickMcGeeIdle2.png" id="4_tbojd"]
+[ext_resource type="Texture2D" uid="uid://sri4eij7ew5f" path="res://Art/StickMcGee3.png" id="4_wlfhp"]
+[ext_resource type="Texture2D" uid="uid://cpqgt0wf2efjt" path="res://Art/Boulder1.png" id="5_qgvoh"]
+[ext_resource type="Texture2D" uid="uid://ch6gdgysb6kys" path="res://Art/HillTest.png" id="6_2yhh4"]
+[ext_resource type="Texture2D" uid="uid://cl2boqe8gkcql" path="res://Art/Boulder2.png" id="6_bcvil"]
+[ext_resource type="Texture2D" uid="uid://b5ahe01skhree" path="res://Art/Boulder3.png" id="7_2j52h"]
+[ext_resource type="Texture2D" uid="uid://p3xtajd4uhyc" path="res://Art/Sun1.png" id="9_5t3rr"]
+[ext_resource type="Texture2D" uid="uid://ldd62pd3fmoe" path="res://Art/BoulderIdle1.png" id="9_43cwg"]
+[ext_resource type="Texture2D" uid="uid://bbs7v0wnc7c11" path="res://Art/Sun2.png" id="10_loomq"]
+[ext_resource type="Texture2D" uid="uid://cva88epqasnep" path="res://Art/BoulderIdle2.png" id="10_ysqed"]
+[ext_resource type="Texture2D" uid="uid://b42rkkp4g2a1k" path="res://Art/BoulderIdle3.png" id="11_r3kmc"]
+[ext_resource type="Script" path="res://clouds.gd" id="12_18iqc"]
+[ext_resource type="Texture2D" uid="uid://c8216pq2n50fc" path="res://Art/Cloud.png" id="12_bgamn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1clum"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enmny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f8xng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tbojd")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w80nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o5jna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wlfhp")
+}],
+"loop": false,
+"name": &"onthemove",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jn6rj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_43cwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ysqed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r3kmc")
+}],
+"loop": true,
+"name": &"boulderidle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qgvoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bcvil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2j52h")
+}],
+"loop": false,
+"name": &"bouldermove",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_882au"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5t3rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_loomq")
+}],
+"loop": true,
+"name": &"sunon",
+"speed": 2.0
+}]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_wgcih")
+
+[node name="TimerLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+anchors_preset = -1
+anchor_left = 0.388
+anchor_top = 0.066
+anchor_right = 0.577
+anchor_bottom = 0.242
+offset_left = 49.024
+offset_top = -18.768
+offset_right = 33.296
+offset_bottom = -18.816
+theme_override_font_sizes/font_size = 75
+text = "10.0"
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 10
+anchors_preset = -1
+anchor_left = 0.312
+anchor_top = 0.611
+anchor_right = 0.669
+anchor_bottom = 0.863
+offset_left = -343.424
+offset_top = -139.928
+offset_right = -342.688
+offset_bottom = -140.224
+theme_override_font_sizes/font_size = 25
+
+[node name="KeyPressesLabel" type="Label" parent="."]
+z_index = 10
+offset_left = 912.0
+offset_top = 512.0
+offset_right = 952.0
+offset_bottom = 535.0
+
+[node name="HighScoreLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+offset_left = 912.0
+offset_top = 552.0
+offset_right = 952.0
+offset_bottom = 575.0
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_1clum")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8peaj")
+expand_mode = 1
+
+[node name="StickMcGee" type="AnimatedSprite2D" parent="."]
+position = Vector2(520, 520)
+rotation = -0.321141
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_enmny")
+animation = &"idle"
+
+[node name="Hill" type="Sprite2D" parent="StickMcGee"]
+show_behind_parent = true
+position = Vector2(600, -104)
+scale = Vector2(4, 4)
+texture = ExtResource("6_2yhh4")
+
+[node name="Boulder" type="AnimatedSprite2D" parent="StickMcGee"]
+position = Vector2(344, -168)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_jn6rj")
+animation = &"boulderidle"
+frame = 1
+frame_progress = 0.522301
+
+[node name="Sun" type="AnimatedSprite2D" parent="."]
+position = Vector2(1024, 104)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_882au")
+animation = &"sunon"
+frame = 1
+frame_progress = 1.0
+
+[node name="Clouds" type="Node2D" parent="."]
+script = ExtResource("12_18iqc")
+
+[node name="Cloud" type="Sprite2D" parent="Clouds"]
+position = Vector2(120, 128)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_bgamn")
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds"]
+position = Vector2(336, 208)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_bgamn")
+
+[node name="Cloud3" type="Sprite2D" parent="Clouds"]
+position = Vector2(392, 96)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_bgamn")
+
+[node name="Cloud4" type="Sprite2D" parent="Clouds"]
+position = Vector2(584, 224)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_bgamn")
+
+[node name="Cloud5" type="Sprite2D" parent="Clouds"]
+position = Vector2(808, 160)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_bgamn")
+
+[node name="NewAttemptButton" type="Button" parent="."]
+visible = false
+offset_left = 384.0
+offset_top = 304.0
+offset_right = 792.0
+offset_bottom = 386.0
+theme_override_font_sizes/font_size = 27
+text = "New Attempt?"
+
+[node name="QuitToMainButton" type="Button" parent="."]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Quit To Main Menu"
+
+[node name="GameStartingText" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.539
+anchor_right = 0.594
+anchor_bottom = 0.727
+offset_left = 37.888
+offset_top = -61.272
+offset_right = 37.712
+offset_bottom = -61.096
+theme_override_font_sizes/font_size = 60
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="pressed" from="NewAttemptButton" to="." method="_on_new_attempt_button_pressed"]
+[connection signal="pressed" from="QuitToMainButton" to="." method="_on_quit_to_main_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

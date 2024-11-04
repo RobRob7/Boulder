@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn5knhoxanu4m"]
+
+[ext_resource type="AudioStream" uid="uid://bqi72n8gn1cb5" path="res://Sounds/outside-ambience-with-birds-61606.mp3" id="1_v2pg4"]
+
+[node name="Ambient" type="AudioStreamPlayer"]
+stream = ExtResource("1_v2pg4")
+volume_db = -15.0
+playback_type = 1
