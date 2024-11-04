@@ -142,9 +142,11 @@ offset_bottom = 575.0
 
 [node name="Background" type="TextureRect" parent="."]
 material = SubResource("CanvasItemMaterial_1clum")
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = -0.137
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -0.223991
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_8peaj")
@@ -228,14 +230,25 @@ anchor_left = 0.356
 anchor_top = 0.539
 anchor_right = 0.594
 anchor_bottom = 0.727
-offset_left = 37.888
-offset_top = -61.272
-offset_right = 37.712
-offset_bottom = -61.096
+offset_left = 15.888
+offset_top = -217.272
+offset_right = 15.712
+offset_bottom = -217.096
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="DisplayCharacter" type="Label" parent="."]
+offset_left = 491.0
+offset_top = 285.0
+offset_right = 631.0
+offset_bottom = 359.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="NewAttemptButton" to="." method="_on_new_attempt_button_pressed"]
 [connection signal="pressed" from="QuitToMainButton" to="." method="_on_quit_to_main_button_pressed"]

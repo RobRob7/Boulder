@@ -4,11 +4,31 @@ var strength = 1000
 var DECREMENT_VALUE = 1
 var GameActive = true
 var score = 0
+var random_chars = []
+
+# Constants for the characters we can use
+const ALPHABETS = "abcdefghijklmnopqrstuvwxyz"
+const NUMERALS = "0123456789"
+const SPACE = " "
+const CHAR_SET = ALPHABETS + NUMERALS + SPACE
+const RANDOM_ARRAY_NUM = 1000
+
+func generate_random_character_array(size: int) -> Array:
+	var result = []
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()  # Seed the random number generator
+
+	for i in range(size):
+		var random_index = rng.randf_range(0, CHAR_SET.length())
+		result.append(CHAR_SET[random_index])
+		
+	return result
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# load highscore from file
 	Global.highscore = int(Global.read_from_file(Global.file))
+	random_chars = generate_random_character_array(RANDOM_ARRAY_NUM)
 	
 	# ambient sound
 	if !Ambient.playing:
@@ -38,13 +58,27 @@ func _ready() -> void:
 	
 	# set key presses score text
 	$KeyPressesLabel.text = "Score: 0"
-
+	
+	# Display the random Character
+	if random_chars[0] == " ":
+		$DisplayCharacter.text = "SPACE"
+	else:
+		$DisplayCharacter.text = random_chars[0]
+	if random_chars.size() > 0:
+		random_chars.remove_at(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# set score and timer labels
+	# set score, timer and character labels
 	$KeyPressesLabel.text = "Score: " + str(score)
 	$TimerLabel.text = str(strength)
+	if random_chars[0] == " ":
+		$DisplayCharacter.text = "SPACE"
+	else:
+		$DisplayCharacter.text = random_chars[0]
+	
+	if random_chars.size() < 50:
+		random_chars.append_array(generate_random_character_array(RANDOM_ARRAY_NUM))
 	
 	# if game is active
 	if GameActive == true:
@@ -58,16 +92,22 @@ func _input(event):
 	# check if game is active
 	if GameActive == true:
 		# if button/key is pressed
-		if event.is_action_pressed("Interact"):
+		if event.is_action_pressed($DisplayCharacter.text.capitalize()) or ($DisplayCharacter.text=="SPACE" and event.is_action_pressed("Interact")):
 			# start playing frame of animation
 			$StickMcGee.play("onthemove")
 			$StickMcGee/Boulder.play("bouldermove")
 			
-			# increment timer by 20
-			strength = strength + 20
+			# increment timer by 15
+			strength = strength + 15
 			
 			# increment score by 1
 			score = score + 1
+			
+			# remove first character from character array
+			if random_chars.size() > 0:
+				random_chars.remove_at(0)
+			
+			
 
 
 # end of game function
