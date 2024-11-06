@@ -60,22 +60,26 @@ func _ready() -> void:
 	$KeyPressesLabel.text = "Score: 0"
 	
 	# Display the random Character
-	if random_chars[0] == " ":
-		$DisplayCharacter.text = "SPACE"
+	if Global.gamemode == "randomized":
+		if random_chars[0] == " ":
+			$DisplayCharacter.text = "SPACE"
+		else:
+			$DisplayCharacter.text = random_chars[0]
+		if random_chars.size() > 0:
+			random_chars.remove_at(0)
 	else:
-		$DisplayCharacter.text = random_chars[0]
-	if random_chars.size() > 0:
-		random_chars.remove_at(0)
+		$DisplayCharacter.text = " Press SPACE"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# set score, timer and character labels
 	$KeyPressesLabel.text = "Score: " + str(score)
 	$TimerLabel.text = str(strength)
-	if random_chars[0] == " ":
-		$DisplayCharacter.text = "SPACE"
-	else:
-		$DisplayCharacter.text = random_chars[0]
+	if Global.gamemode == "randomized":
+		if random_chars[0] == " ":
+			$DisplayCharacter.text = "     SPACE"
+		else:
+			$DisplayCharacter.text = "         " + random_chars[0]
 	
 	if random_chars.size() < 50:
 		random_chars.append_array(generate_random_character_array(RANDOM_ARRAY_NUM))
@@ -92,13 +96,16 @@ func _input(event):
 	# check if game is active
 	if GameActive == true:
 		# if button/key is pressed
-		if event.is_action_pressed($DisplayCharacter.text.capitalize()) or ($DisplayCharacter.text=="SPACE" and event.is_action_pressed("Interact")):
+		if (event.is_action_pressed($DisplayCharacter.text.capitalize()) and Global.gamemode == "randomized") or ($DisplayCharacter.text=="     SPACE" and (event.is_action_pressed("Interact") and Global.gamemode == "randomized")) or (Global.gamemode == "normal" and event.is_action_pressed("Interact")):
 			# start playing frame of animation
 			$StickMcGee.play("onthemove")
 			$StickMcGee/Boulder.play("bouldermove")
 			
 			# increment timer by 15
-			strength = strength + 15
+			if Global.gamemode == "normal":
+				strength = strength + 15
+			else:
+				strength = strength + 100
 			
 			# increment score by 1
 			score = score + 1
@@ -117,6 +124,7 @@ func end_game():
 	
 	# hide the timer label
 	$TimerLabel.hide()
+	$DisplayCharacter.hide()
 	
 	# if score is better than previous high score
 	if score > Global.highscore:
@@ -141,7 +149,7 @@ func _on_new_attempt_button_pressed() -> void:
 	ButtonSound.play()
 	$NewAttemptButton.disabled = true
 	$QuitToMainButton.disabled = true
-	await ButtonSound.finished
+	#await ButtonSound.finished
 	# reload game scene
 	get_tree().reload_current_scene()
 	
@@ -151,7 +159,7 @@ func _on_quit_to_main_button_pressed() -> void:
 	ButtonSound.play()
 	$QuitToMainButton.disabled = true
 	$NewAttemptButton.disabled = true
-	await ButtonSound.finished
+	#await ButtonSound.finished
 	get_tree().change_scene_to_file("res://main_scene.tscn")
 
 

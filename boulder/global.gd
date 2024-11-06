@@ -2,6 +2,7 @@ extends Node
 
 # highscore of player
 var highscore = 0
+var gamemode = "normal"
 
 # filepath to highscore
 var file = "res://highscore.txt"
