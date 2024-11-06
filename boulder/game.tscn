@@ -127,18 +127,20 @@ theme_override_font_sizes/font_size = 25
 
 [node name="KeyPressesLabel" type="Label" parent="."]
 z_index = 10
-offset_left = 912.0
-offset_top = 512.0
-offset_right = 952.0
-offset_bottom = 535.0
+offset_left = 876.0
+offset_top = 510.0
+offset_right = 1080.0
+offset_bottom = 595.0
+theme_override_font_sizes/font_size = 40
 
 [node name="HighScoreLabel" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
 z_index = 10
 offset_left = 912.0
-offset_top = 552.0
-offset_right = 952.0
-offset_bottom = 575.0
+offset_top = 530.0
+offset_right = 1124.0
+offset_bottom = 667.0
+theme_override_font_sizes/font_size = 100
 
 [node name="Background" type="TextureRect" parent="."]
 material = SubResource("CanvasItemMaterial_1clum")
@@ -161,12 +163,12 @@ animation = &"idle"
 
 [node name="Hill" type="Sprite2D" parent="StickMcGee"]
 show_behind_parent = true
-position = Vector2(600, -104)
+position = Vector2(566.715, 57.8405)
 scale = Vector2(4, 4)
 texture = ExtResource("6_2yhh4")
 
 [node name="Boulder" type="AnimatedSprite2D" parent="StickMcGee"]
-position = Vector2(344, -168)
+position = Vector2(476.847, -39.5029)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_jn6rj")
 animation = &"boulderidle"
@@ -246,7 +248,7 @@ offset_top = 285.0
 offset_right = 631.0
 offset_bottom = 359.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
 
