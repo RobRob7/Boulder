@@ -21,7 +21,6 @@ Development Team:
 - KwabenaAduAgyemang
 
 <h2>
-<img src="https://lh4.googleusercontent.com/proxy/4_Zan5D7FOYcviw14ecpCpx8Tvq-ii1DoLIe15O2eDy9INbz2mhP-27Z3HCWby3EaQned-UF-1n4zFzbkSEFt9p7sOQUnsX-q_GyjI4C1-bSIVXTG0z0dugD" height="30" align="center">
 Requirements
 </h2>
 
